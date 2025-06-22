@@ -2,7 +2,7 @@ import { getEnvVar } from './utils/getEnvVar.js';
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
-import router from './routers/todolist.js';
+import router from './routers/index.js';
 
 const PORT = Number(getEnvVar('PORT', '3000'));
 
