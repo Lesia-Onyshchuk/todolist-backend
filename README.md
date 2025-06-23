@@ -33,10 +33,8 @@ src/
 
 1. Clone the repository:
 
-```bash
 git clone https://github.com/your-username/todolist-backend.git
 cd todolist-backend
-```
 
 2. Install dependencies:
 
@@ -54,17 +52,20 @@ PORT=3000
 
 npm run dev
 
-📚 API Endpoints
+## 📚 API Endpoints
+
 All routes are prefixed with /api
 
-🗂️ Boards
+## 🗂️ Boards
+
 GET /api/boards – Get all boards
 
 POST /api/boards – Create a new board
 
 DELETE /api/boards/:boardId – Delete a board and its tasks
 
-✅ Tasks
+## ✅ Tasks
+
 GET /api/boards/:boardId/tasks – Get tasks for a specific board
 
 POST /api/boards/:boardId/tasks – Add a task to a board
@@ -73,20 +74,21 @@ PATCH /api/tasks/:taskId – Update a task
 
 DELETE /api/tasks/:taskId – Delete a task
 
-✅ Validation
+## ✅ Validation
+
 Request validation is handled with Joi:
 
 boardId, taskId parameter validation
 
 Request body validation (title, description, status)
 
-⚙️ Linting
+## ⚙️ Linting
 
 Run ESLint:
 
 npm run lint
 
-👩‍💻 Author
+## 👩‍💻 Author
 
 Lesia Onyshchuk
 GitHub: Lesia-Onyshchuk
