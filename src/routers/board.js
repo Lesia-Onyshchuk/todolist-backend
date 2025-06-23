@@ -17,11 +17,11 @@ router.get(
   ctrlController(getBoardByIdController),
 );
 
-router.post(
-  '/',
-  validateBody(createBoardSchema),
-  ctrlController(addBoardController),
-);
+// router.post(
+//   '/',
+//   validateBody(createBoardSchema),
+//   ctrlController(addBoardController),
+// );
 
 router.delete(
   '/:boardId',
