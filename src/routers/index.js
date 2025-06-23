@@ -13,7 +13,8 @@ router.post(
   validateBody(createBoardSchema),
   ctrlController(addBoardController),
 );
-router.use('/boards/:boardId', tasksRouter);
+
+router.use('/boards/:boardId/tasks', tasksRouter);
 router.use('/boards', boardRouter);
 
 export default router;

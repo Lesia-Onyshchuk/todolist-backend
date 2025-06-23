@@ -1,12 +1,11 @@
 import { Router } from 'express';
 import { ctrlController } from '../utils/ctrlController.js';
 import {
-  addBoardController,
   deleteBoardController,
   getBoardByIdController,
 } from '../controllers/board.js';
-import { validateBody } from '../middlewares/validateBody.js';
-import { createBoardSchema } from '../validation/board.js';
+// import { validateBody } from '../middlewares/validateBody.js';
+// import { createBoardSchema } from '../validation/board.js';
 import { isValidId } from '../middlewares/isValidId.js';
 
 const router = Router();

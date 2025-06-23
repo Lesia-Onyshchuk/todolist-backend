@@ -1,13 +1,16 @@
 import createHttpError from 'http-errors';
-import { isValidObjectId } from 'mongoose';
+import mongoose from 'mongoose';
 
 export const isValidId =
-  (paramName = 'id') =>
+  (param = 'id') =>
   (req, res, next) => {
-    const id = req.params[paramName];
+    const id = req.params[param];
 
-    if (!isValidObjectId(id)) {
-      return next(createHttpError(400, `Invalid ${paramName}`));
+    const isValidObjectId = mongoose.Types.ObjectId.isValid(id);
+    const isNumericId = !isNaN(Number(id));
+
+    if (!isValidObjectId && !isNumericId) {
+      throw createHttpError(400, 'Invalid ' + param);
     }
 
     next();
