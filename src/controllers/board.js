@@ -1,18 +1,33 @@
 import createHttpError from 'http-errors';
-import { addBoard, deleteBoard, getBoardById } from '../services/board.js';
+import {
+  addBoard,
+  deleteBoard,
+  getBoardByBoardId,
+  getBoardById,
+} from '../services/board.js';
+// import { BoardCollection } from '../db/models/board.js';
+import mongoose from 'mongoose';
 
 export const getBoardByIdController = async (req, res) => {
-  const { boardId } = req.params;
+  const { id } = req.params;
 
-  const board = await getBoardById(boardId);
+  let board = null;
+
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    board = await getBoardById(id);
+  }
+
+  if (!board && !isNaN(id)) {
+    board = await getBoardByBoardId(Number(id));
+  }
 
   if (!board) {
-    throw createHttpError(404, 'Board not found');
+    return res.status(404).json({ message: 'Board not found' });
   }
 
   res.status(200).json({
     status: 200,
-    message: `Successfully found board with id ${boardId}!`,
+    message: `Successfully found board with id ${id}!`,
     data: board,
   });
 };
