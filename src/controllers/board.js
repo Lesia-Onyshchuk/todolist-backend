@@ -7,7 +7,7 @@ export const getBoardByIdController = async (req, res) => {
   const board = await getBoardById(boardId);
 
   if (!board) {
-    return res.status(404).json({ message: 'Board not found!' });
+    throw createHttpError(404, 'Board not found');
   }
 
   res.status(200).json({

@@ -35,6 +35,10 @@ export const updateTaskController = async (req, res) => {
 
   const updatedTask = await updateTask(taskId, req.body, boardId);
 
+  if (!updatedTask) {
+    throw createHttpError(404, 'Task not found');
+  }
+
   res.status(200).json({
     status: 200,
     message: `Successfully updated task by id ${taskId}!`,
@@ -48,7 +52,7 @@ export const deleteTaskController = async (req, res, next) => {
   const task = await deleteTask(taskId, boardId);
 
   if (!task) {
-    throw createHttpError(404, 'Contact not found');
+    throw createHttpError(404, 'Task not found');
   }
 
   res.status(204).send();

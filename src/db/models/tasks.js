@@ -1,18 +1,25 @@
 import { model, Schema } from 'mongoose';
+import { taskStatus } from '../../constants/tasks.js';
 
 const tasksSchema = new Schema(
   {
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    boardId: {
-      type: Schema.Types.ObjectId,
-      ref: 'boards',
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
     },
     status: {
       type: String,
-      enum: ['todo', 'inprogress', 'done'],
-      default: 'todo',
+      enum: taskStatus,
+      default: taskStatus[0],
       required: true,
+    },
+    boardId: {
+      type: Schema.Types.ObjectId,
+      ref: 'boards',
     },
   },
   {

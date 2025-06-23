@@ -1,12 +1,13 @@
 import { model, Schema } from 'mongoose';
+import { generateRandom } from '../../utils/generateRandom.js';
 
-const random = () => Math.floor(Math.random() * (999 - 100 + 1)) + 100;
+// const random = () => Math.floor(Math.random() * (999 - 100 + 1)) + 100;
 
 const boardSchema = new Schema(
   {
     boardId: {
       type: Number,
-      default: () => random(),
+      default: () => generateRandom(),
       unique: true,
       required: true,
     },
