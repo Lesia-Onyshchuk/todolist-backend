@@ -10,6 +10,8 @@ const boardSchema = new Schema(
       default: () => generateRandom(),
       unique: true,
       required: true,
+      min: 100,
+      max: 999,
     },
     name: { type: String, required: true },
   },
