@@ -12,7 +12,7 @@ import { isValidId } from '../middlewares/isValidId.js';
 const router = Router();
 
 router.get(
-  '/:id',
+  '/:boardId',
   isValidId('boardId'),
   ctrlController(getBoardByIdController),
 );

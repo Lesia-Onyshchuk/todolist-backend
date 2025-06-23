@@ -4,12 +4,8 @@ import { TasksCollection } from '../db/models/tasks.js';
 
 const { ObjectId } = mongoose.Types;
 
-export const getBoardById = async (mongoId) => {
-  return BoardCollection.findById(mongoId);
-};
-
 export const getBoardByBoardId = async (boardId) => {
-  return BoardCollection.findOne({ boardId });
+  return await BoardCollection.findOne({ boardId });
 };
 
 export const addBoard = async (payload) => {
