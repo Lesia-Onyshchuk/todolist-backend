@@ -18,8 +18,8 @@ const tasksSchema = new Schema(
       required: true,
     },
     boardId: {
-      type: Schema.Types.ObjectId,
-      ref: 'boards',
+      type: Number,
+      required: true,
     },
   },
   {
