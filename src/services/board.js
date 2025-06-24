@@ -14,8 +14,11 @@ export const addBoard = async (payload) => {
 };
 
 export const deleteBoard = async (boardId) => {
-  const board = await BoardCollection.findOneAndDelete({ _id: boardId });
+  const board = await BoardCollection.findOneAndDelete({
+    boardId: Number(boardId),
+  });
 
-  await TasksCollection.deleteMany({ boardId: new ObjectId(boardId) });
+  await TasksCollection.deleteMany({ boardId: Number(boardId) });
+
   return board;
 };
