@@ -1,0 +1,11 @@
+import createHttpError from 'http-errors';
+import mongoose from 'mongoose';
+export const isValidId = (param = 'id') => (req, res, next) => {
+    const id = req.params[param];
+    const isValidObjectId = mongoose.Types.ObjectId.isValid(id);
+    const isNumericId = !isNaN(Number(id));
+    if (!isValidObjectId && !isNumericId) {
+        throw createHttpError(400, `Invalid ${param}`);
+    }
+    next();
+};
